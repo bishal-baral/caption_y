@@ -7,5 +7,4 @@ def my_profile():
     response_body = {
         "message": "Hello World!",
     }
-
     return response_body

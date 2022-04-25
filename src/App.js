@@ -5,7 +5,6 @@ import './App.css';
 
 function App() {
 
-   // new line start
   const [messages, setMessages] = useState(null)
 
   function getData() {
@@ -25,31 +24,18 @@ function App() {
         console.log(error.response.headers)
         }
     })}
-    //end of new line 
 
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-
-        {/* new line start*/}
+        
         <p>To get your profile details: </p><button onClick={getData}>Click me</button>
-        {messages && <div>
-              <p>Message: {messages.message}</p>
-            </div>
+        {
+          messages && 
+          <div>
+            <p>Message: {messages.message}</p>
+          </div>
         }
-         {/* end of new line */}
       </header>
     </div>
   );
