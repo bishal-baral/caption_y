@@ -24,3 +24,6 @@ yarn-error.log*
 
 backend/env
 backend/__pycache__
+
+# DATA
+/data

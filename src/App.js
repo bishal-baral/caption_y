@@ -1,42 +1,57 @@
 import { useState } from 'react'
 import axios from "axios";
-import logo from './logo.svg';
 import './App.css';
 
-function App() {
+function App(){
+  const [search, setSearch] = useState("")
+  const [results, setResults] = useState([]);
 
-  const [messages, setMessages] = useState(null)
-
-  function getData() {
-    axios({
-      method: "GET",
-      url:"/message",
+  const handleSearch = async e => {
+    e.preventDefault();
+    if (search === '') return;
+    const response = await axios({
+      method: "POST",
+      url:"/results",
+      data: {
+        query: search,
+      }
     })
-    .then((response) => {
-      const res =response.data
-      console.log(res);
-      setMessages(({
-        message: res.message}))
-    }).catch((error) => {
-      if (error.response) {
-        console.log(error.response)
-        console.log(error.response.status)
-        console.log(error.response.headers)
-        }
-    })}
+    console.log(response.data);
+    setResults(response.data)    
+  }
 
   return (
+    
     <div className="App">
-      <header className="App-header">
-        
-        <p>To get your profile details: </p><button onClick={getData}>Click me</button>
-        {
-          messages && 
-          <div>
-            <p>Message: {messages.message}</p>
-          </div>
-        }
+      <header>
+        <h1> Captiony </h1>
+        <form 
+          className="search-box"
+          onSubmit={handleSearch}
+        >
+          <input 
+            type="search" 
+            placeholder="What are you looking for?"
+            value={search}
+            onChange={e => setSearch(e.target.value)}
+          />
+        </form>
+          <p>Search Results: 0</p>
       </header>
+
+      <div className="results">
+        {
+          results.map((result, i) =>{
+            return (
+              <div key={"result"+i} className="result">
+                <h3>{result.title}</h3>
+                <p> {result.description}</p>
+                <a href={result.imdb_url} target="_blank" rel="nofollow"> View on IMDB </a>
+              </div>
+            )
+          })
+        }
+      </div>
     </div>
   );
 }
