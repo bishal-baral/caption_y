@@ -42,8 +42,34 @@ import SearchBar from './components/SearchBar';
 //   );
 // }
 
-const App = () => (
-  <SearchBar />
-);
+// const App = () => (
+//   <SearchBar />
+// );
+
+function App(){
+  const [search, setSearch] = userState("")
+  const [results, setResults] = useState([]);
+  const [searchInfo, setSearchInfo] = useState([]);
+
+  return (
+    <div className="App">
+      <header>
+        <h1> Captiony </h1>
+        <form className="search-box">
+          <input type="search" placeholder="What are you looking for?"/>
+        </form>
+          <p>Search Results: 0</p>
+      </header>
+
+      <div className="results">
+        <div className="result">
+          <h3> Title goes here</h3>
+          <p> lorem ipsum dolor sit amet, consectetur lorem ipsum dolor sit amet lorem ipsum dolor sit am</p>
+          <a href="#"> Read More </a>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default App;
