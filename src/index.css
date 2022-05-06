@@ -38,7 +38,7 @@ header {
 }
 
 h1{
-  color: rgb(208, 173, 173);
+  color: rgb(0, 0, 0);
   font-size: 42px;
   text-transform: uppercase;
   text-align: center;
@@ -75,7 +75,7 @@ h1{
 
 .results {
   color: black;
-  max-width: 75%;
+  width: 75%;
   margin: 0 auto;
 }
 
