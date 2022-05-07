@@ -24,7 +24,7 @@ function App(){
     
     <div className="App">
       <header>
-        <h1> Captiony </h1>
+        <h1> Caption-Y </h1>
         <form 
           className="search-box"
           onSubmit={handleSearch}
@@ -36,7 +36,7 @@ function App(){
             onChange={e => setSearch(e.target.value)}
           />
         </form>
-          <p>Search Results: 0</p>
+          <p>Search Results: {results.length}</p>
       </header>
 
       <div className="results">
@@ -44,9 +44,15 @@ function App(){
           results.map((result, i) =>{
             return (
               <div key={"result"+i} className="result">
-                <h3>{result.title}</h3>
-                <p> {result.description}</p>
-                <a href={result.imdb_url} target="_blank" rel="nofollow"> View on IMDB </a>
+                <div className="result-img">
+                <img src="https://www.w3schools.com/images/lamp.jpg" alt="Lamp" width="100" height="100"/>
+                </div>
+                <div className="result-content">
+                  <h3>{result.title}</h3>
+                  <p> {result.description}</p>
+                  <a href={result.imdb_url} target="_blank" rel="nofollow"> View on IMDB </a>
+                </div>
+                
               </div>
             )
           })

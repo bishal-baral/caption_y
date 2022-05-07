@@ -26,4 +26,4 @@ backend/env
 backend/__pycache__
 
 # DATA
-/data
+/data/captions.jl

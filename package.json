@@ -21,7 +21,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "start-backend": "cd backend && flask run",
+    "start-backend": "cd backend && FLASK_APP=app.py FLASK_ENV=development flask run",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
