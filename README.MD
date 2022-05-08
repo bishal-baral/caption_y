@@ -13,7 +13,7 @@ To start the app:
 - run 'pip install python-dotenv'
 - to run just the backend run 'env/bin/flask run --no-debugger'
 
-- to run the backend server with npm, run 'npm run start-server' on a separate terminal window
+- to run the backend server with npm, run 'npm run start-backend' on a separate terminal window
 - to run the react server, 'npm run start'  
 
 

@@ -1,5 +1,4 @@
 from flask import Flask, request
-from es_service import test
 import json
 from es_service.search import make_query
 
@@ -10,7 +9,7 @@ api = Flask(__name__)
 def get_results():
     print(request.data)
     query_text = request.get_json()['query']
-    results = test.make_query(query_text)
+    results = make_query(query_text)
     # print(results)
     # response_body = [
     #         {
