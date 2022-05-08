@@ -1,6 +1,7 @@
 from flask import Flask, request
 from es_service import test
 import json
+from es_service.search import make_query
 
 api = Flask(__name__)
 

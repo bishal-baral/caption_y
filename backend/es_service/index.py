@@ -48,6 +48,7 @@ class ESIndex(object):
             es_doc.doc_id = doc["imdb_id"]
             es_doc.title = doc["title"]
             es_doc.content = doc["content"]
+            es_doc.imdb_url = doc['imdb_url']
             yield es_doc
 
     def load(self, docs: Union[Iterator[Dict], Sequence[Dict]]):

@@ -4,6 +4,7 @@ from elasticsearch_dsl import (  # type: ignore
     Keyword,
 )
 
+
 class BaseDoc(Document):
     """
     wapo document mapping structure
@@ -19,7 +20,10 @@ class BaseDoc(Document):
         analyzer="standard"
     )  # we can also set the standard analyzer explicitly
 
-    
+    imdb_url = (
+        Text()
+    )
+
     def save(self, *args, **kwargs):
         """
         save an instance of this document mapping in the index
