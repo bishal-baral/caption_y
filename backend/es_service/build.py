@@ -14,9 +14,7 @@ logging.basicConfig(
 )
 
 
-def load_clean_wapo_with_embedding(
-    wapo_jl_path: Union[str, os.PathLike]
-) -> Generator[Dict, None, None]:
+def load_clean_wapo_with_embedding(wapo_jl_path: Union[str, os.PathLike]) -> Generator[Dict, None, None]:
     with open(wapo_jl_path, "r", encoding="utf-8") as f:
         for i, line in enumerate(f):
             yield json.loads(line)

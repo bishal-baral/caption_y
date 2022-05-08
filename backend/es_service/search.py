@@ -14,7 +14,7 @@ def search(index: str, query: Query) -> None:
         result.append(
             {
                 "title": hit.title,
-                # "imdb_url": hit.imdb_url
+                "imdb_url": hit.imdb_url
             })
     return result
 
