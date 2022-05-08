@@ -49,8 +49,10 @@ function App(){
                 </div>
                 <div className="result-content">
                   <h3>{result.title}</h3>
-                  <p> {result.description}</p>
-                  <a href={result.imdb_url} target="_blank" rel="nofollow"> View on IMDB </a>
+                  <p>This is the description</p>
+                  <a href="https://www.google.com/" target="_blank" rel="nofollow"> View on IMDB </a>
+                  {/* <p> {result.description}</p> */}
+                  {/* <a href={result.imdb_url} target="_blank" rel="nofollow"> View on IMDB </a> */}
                 </div>
                 
               </div>
