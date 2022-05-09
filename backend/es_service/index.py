@@ -45,10 +45,19 @@ class ESIndex(object):
         """
         for i, doc in enumerate(docs):
             es_doc = BaseDoc(_id=i)
-            es_doc.doc_id = doc["imdb_id"]
+            es_doc.imdb_id = doc["imdb_id"]
             es_doc.title = doc["title"]
             es_doc.content = doc["content"]
             es_doc.imdb_url = doc['imdb_url']
+            es_doc.year = doc['year']
+            es_doc.rated = doc['rated ']
+            es_doc.genre = doc['genre']
+            es_doc.plot = doc['plot']
+            es_doc.language = doc['language']
+            es_doc.country = doc['country']
+            es_doc.poster = doc['poster']
+            es_doc.imdbRating = doc['imdbRating']
+            es_doc.type = doc['type']
             yield es_doc
 
     def load(self, docs: Union[Iterator[Dict], Sequence[Dict]]):

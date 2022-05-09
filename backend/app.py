@@ -9,6 +9,7 @@ api = Flask(__name__)
 def get_results():
     print(request.data)
     query_text = request.get_json()['query']
+<<<<<<< HEAD
     # results = make_query(query_text)
     # print(results)
     results = [
@@ -39,4 +40,7 @@ def get_results():
                 "type": "movie"
             }
     ]
+=======
+    results = make_query(query_text)
+>>>>>>> 0733a92024c45be90d34e6fd66ff663ffaeb897f
     return json.dumps(results)

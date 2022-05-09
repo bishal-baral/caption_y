@@ -10,7 +10,7 @@ class BaseDoc(Document):
     wapo document mapping structure
     """
 
-    doc_id = (
+    imdb_id = (
         Keyword()
     )  # we want to treat the doc_id as a Keyword (its value won't be tokenized or normalized).
     title = (
@@ -21,6 +21,35 @@ class BaseDoc(Document):
     )  # we can also set the standard analyzer explicitly
 
     imdb_url = (
+        Text()
+    )
+    year = (
+        Text()
+    )
+    rated = (
+        Text()
+    )
+    genre = (
+        Text()
+    )
+    plot = (
+        Text()
+    )
+
+    language = (
+        Text()
+    )
+    country = (
+        Text()
+    )
+    poster = (
+        Text()
+    )
+
+    imdbRating = (
+        Text()
+    )
+    type = (
         Text()
     )
 
