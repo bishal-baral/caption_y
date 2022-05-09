@@ -143,13 +143,14 @@ h1{
 .result-viewImdb{
   display: inline-block;
   padding:12px 16px;
-  background-color:#24803286;
+  background-color:#00000086;
   color: white;
   font-weight: 700;
   text-decoration: none;
   border-radius: 12px;
   transition:0.4s;
   margin-left: 10px;
+  border: 1px solid #39d353;
 }
 
 .result a:hover {
@@ -184,6 +185,7 @@ h1{
   border-radius: 12px;
   transition:0.4s;
   margin-left: 10px;
+  border: 1px solid #39d35355;
 }
 
 .result-prev:hover {
@@ -192,6 +194,7 @@ h1{
 }
 
 .result-next{
+  border: 1px solid #39d35355;
   display: inline-block;
   padding:12px 16px;
   background-color: #628ac2;
