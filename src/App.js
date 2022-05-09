@@ -5,6 +5,9 @@ import './App.css';
 function App(){
   const [search, setSearch] = useState("")
   const [results, setResults] = useState([]);
+  const [isMovie, setIsMovie] = useState(false);
+  const [isSeries, setIsSeries] = useState(false);
+  const [isBoth, setIsBoth] = useState(true);
   const [isPlot, setIsPlot] = useState(true);
   const [isCaption, setIsCaption] = useState(false);
   const [showDetails, setShowDetails] = useState(new Array(30).fill(false));
@@ -14,6 +17,8 @@ function App(){
     if (search === '') return;
 
     let content_type = ""
+    let media_type = ""
+
     if (isPlot){
       content_type = "plot"
     }
@@ -21,12 +26,24 @@ function App(){
       content_type = "caption"
     }
 
+    if (isMovie){
+      media_type = "movie"
+    }
+    else if (isSeries){
+      media_type = "series"
+    }
+    else if (isBoth){
+      media_type = "both"
+    }
+
+
     const response = await axios({
       method: "POST",
       url:"/results",
       data: {
         query: search,
         content_type: content_type,
+        media_type: media_type
       }
     })
     console.log(response.data);
@@ -34,16 +51,32 @@ function App(){
   }
 
   const handleIsPlot = () => {
-    console.log("option1 selected");
     setIsPlot(!isPlot);
     setIsCaption(false);
   };
 
   const handleIsCaption = () => {
-    console.log("option2 selected");
     setIsCaption(!isCaption);
     setIsPlot(false);
   };
+
+  const handleIsMovie = () => {
+    setIsMovie(!isMovie);
+    setIsSeries(false);
+    setIsBoth(false);
+  };
+  const handleIsSeries = () => {
+    setIsSeries(!isSeries);
+    setIsMovie(false);
+    setIsBoth(false);
+  };
+  const handleIsBoth = () => {
+    setIsBoth(!isBoth);
+    setIsMovie(false);
+    setIsSeries(false);
+  };
+
+
 
   const handleShowDetails = (i) => {
     console.log(i);
@@ -61,6 +94,21 @@ function App(){
           className="search-box"
           onSubmit={handleSearch}
         >
+        <div className="search-box-radio">
+          <label>
+            <input type="radio" checked={isMovie} onChange={handleIsMovie} />
+            Movie
+          </label>
+          <label>
+            <input type="radio" checked={isSeries} onChange={handleIsSeries} />
+            Series
+          </label>
+          <label>
+            <input type="radio" checked={isBoth} onChange={handleIsBoth} />
+            Both
+          </label>
+        </div>
+
         <div className="search-box-radio">
           <label>
             <input type="radio" checked={isPlot} onChange={handleIsPlot} />
