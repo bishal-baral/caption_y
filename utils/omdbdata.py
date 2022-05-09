@@ -24,14 +24,28 @@ def getData(id: str):
 def create_index():
     with open("../data/captions.jl", encoding='utf-8') as f:
         for line in f:
-            movie_data = json.loads(line)
-            imdb_id = movie_data["imdb_id"]
+            present_movie_data = json.loads(line)
+            imdb_id = present_movie_data["imdb_id"]
             try:
                 more_movie_data = getData(imdb_id)
-                more_movie_data["content"] = movie_data["content"]
+                data = {
+                    "title": present_movie_data["title"],
+                    "content": present_movie_data["content"],
+                    "imdb_url": present_movie_data["imdb_url"],
+                    "imdb_id": more_movie_data["imdbID"],
+                    "year": more_movie_data['Year'],
+                    "rated ": more_movie_data['Rated'],
+                    "genre": more_movie_data['Genre'],
+                    "plot": more_movie_data['Plot'],
+                    "language": more_movie_data['Language'],
+                    "country": more_movie_data['Country'],
+                    "poster": more_movie_data['Poster'],
+                    "imdbRating": more_movie_data['imdbRating'],
+                    "type": more_movie_data['Type']
+                }
 
                 with open("../data/captions_updated.jl", 'a', encoding='utf-8') as f2:
-                    f2.write(json.dumps(more_movie_data) + "\n")
+                    f2.write(json.dumps(data) + "\n")
             except:
                 print("skipping", imdb_id)
 

@@ -14,7 +14,16 @@ def search(index: str, query: Query) -> None:
         result.append(
             {
                 "title": hit.title,
-                "imdb_url": hit.imdb_url
+                "imdb_url": hit.imdb_url,
+                "year": hit.year,
+                "rated": hit.rated,
+                "genre": hit.genre,
+                "plot": hit.plot,
+                "language": hit.language,
+                "country": hit.country,
+                "poster": hit.poster,
+                "imdbRating": hit.imdbRating,
+                "type": hit.type
             })
     return result
 
