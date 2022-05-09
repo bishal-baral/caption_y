@@ -28,12 +28,17 @@ def search(index: str, query: Query) -> None:
     return result
 
 
-def make_query(query_text):
+def make_query(query_text, content_type):
     connections.create_connection(
         hosts=["localhost"], timeout=100, alias="default")
-    q_basic = Match(
-        content={"query": query_text}
-    )
+    if content_type=="caption":
+        q_basic = Match(
+            content={"query": query_text}
+        )
+    else:
+        q_basic = Match(
+            plot={"query": query_text}
+        )
     return search("movies", q_basic)
 
 
