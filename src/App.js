@@ -11,6 +11,8 @@ function App(){
   const [isPlot, setIsPlot] = useState(true);
   const [isCaption, setIsCaption] = useState(false);
   const [showDetails, setShowDetails] = useState(new Array(30).fill(false));
+  const [currentPage, setCurrentPage] = useState(0)
+  const RESULTS_PER_PAGE = 10
 
   const handleSearch = async e => {
     e.preventDefault();
@@ -47,7 +49,9 @@ function App(){
       }
     })
     console.log(response.data);
-    setResults(response.data)    
+    setResults(response.data);
+    setShowDetails(new Array(30).fill(false))
+    setCurrentPage(0)
   }
 
   const handleIsPlot = () => {
@@ -65,18 +69,18 @@ function App(){
     setIsSeries(false);
     setIsBoth(false);
   };
+
   const handleIsSeries = () => {
     setIsSeries(!isSeries);
     setIsMovie(false);
     setIsBoth(false);
   };
+
   const handleIsBoth = () => {
     setIsBoth(!isBoth);
     setIsMovie(false);
     setIsSeries(false);
   };
-
-
 
   const handleShowDetails = (i) => {
     console.log(i);
@@ -84,6 +88,13 @@ function App(){
     temp_state[i] = !temp_state[i];
     setShowDetails(temp_state);
     console.log(showDetails);
+  }
+
+  const handleNextPage = () => {
+    setCurrentPage(currentPage + 1);
+  }
+  const handlePreviousPage = () => {
+    setCurrentPage(currentPage - 1);
   }
 
   return (
@@ -127,42 +138,80 @@ function App(){
             onChange={e => setSearch(e.target.value)}
           />
         </form>
-          <p>Search Results: {results.length}</p>
-      </header>
-
-      <div className="results">
-        {
-          results.map((result, i) =>{
-            return (
-              <div key={"result"+i} className="result">
-                <div className="result-img">
-                <img src={result.poster} alt="Lamp" width="100" height="100"/>
-                </div>
-                <div className="result-content">
-                  <h3>{result.title}</h3>
-                  { showDetails[i] &&
-                  <div>
-                    <p>Year: {result.year}</p>
-                    <p>Rated: {result.rated}</p>
-                    <p>Genre: {result.genre}</p>
-                    <p>Language: {result.language}</p>
-                    <p>Country: {result.country}</p>
-                    <p>IMDB Rating: {result.imdbRating}</p>
-                    <p>Type: {result.type}</p>
-                    <p> Plot: {result.plot}</p>
-                  </div>
-                  }
-                  
-                  <a onClick={() => handleShowDetails(i)} className="result-readMore" >{showDetails[i] ? "Hide" : "Show" } Details</a>
-                  {showDetails[i] &&
-                  <a href={result.imdb_url} className="result-viewImdb" target="_blank" rel="nofollow"> View on IMDB </a>}
-                </div>
-                
-              </div>
-            )
-          })
+        { results.length !== 0 &&
+          <div className="search-results">
+            <p >Search Results: {results.length}</p>
+            <p >Page: {currentPage+1} / {Math.ceil(results.length / RESULTS_PER_PAGE)}  </p>
+          </div>
         }
-      </div>
+
+         
+
+      </header>
+      { results.length !== 0 &&
+        <div className="results">
+          <div className="changePage">
+            <div>
+              { (currentPage !== 0) && 
+                <a href="#" onClick={handlePreviousPage} className="result-viewImdb" >Previous Page</a>
+              }
+            </div>
+
+            <div>
+              { (currentPage < (results.length/ RESULTS_PER_PAGE) - 1) && 
+                <a href="#" onClick={handleNextPage} className="result-viewImdb" >Next Page</a>
+              }
+            </div>
+          </div>
+
+          {
+            results.slice((currentPage*RESULTS_PER_PAGE), ((currentPage + 1) * RESULTS_PER_PAGE)).map((result, i) =>{
+              return (
+                <div key={"result"+i} className="result">
+                  <div className="result-img">
+                  <img src={result.poster} alt="Lamp" width="100" height="100"/>
+                  </div>
+                  <div className="result-content">
+                    <h3>{result.title}</h3>
+                    { showDetails[i] &&
+                    <div>
+                      <p>Year: {result.year}</p>
+                      <p>Rated: {result.rated}</p>
+                      <p>Genre: {result.genre}</p>
+                      <p>Language: {result.language}</p>
+                      <p>Country: {result.country}</p>
+                      <p>IMDB Rating: {result.imdbRating}</p>
+                      <p>Type: {result.type}</p>
+                      <p> Plot: {result.plot}</p>
+                    </div>
+                    }
+                    
+                    <a onClick={() => handleShowDetails(i)} className="result-readMore" >{showDetails[i] ? "Hide" : "Show" } Details</a>
+                    {showDetails[i] &&
+                    <a href={result.imdb_url} className="result-viewImdb" target="_blank" rel="nofollow"> View on IMDB </a>}
+                  </div>
+                  
+                </div>
+              )
+            })
+          }
+
+          <div className="changePage">
+            <div>
+              { (currentPage !== 0) && 
+                <a href="#" onClick={handlePreviousPage} className="result-viewImdb" >Previous Page</a>
+              }
+            </div>
+
+            <div>
+              { (currentPage < (results.length/ RESULTS_PER_PAGE) - 1) && 
+                <a href="#" onClick={handleNextPage} className="result-viewImdb" >Next Page</a>
+              }
+            </div>
+          </div>
+
+        </div>
+      } 
     </div>
   );
 }
