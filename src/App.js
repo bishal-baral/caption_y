@@ -92,9 +92,11 @@ function App(){
 
   const handleNextPage = () => {
     setCurrentPage(currentPage + 1);
+    setShowDetails(new Array(30).fill(false));
   }
   const handlePreviousPage = () => {
     setCurrentPage(currentPage - 1);
+    setShowDetails(new Array(30).fill(false));
   }
 
   return (
@@ -153,13 +155,13 @@ function App(){
           <div className="changePage">
             <div>
               { (currentPage !== 0) && 
-                <a href="#" onClick={handlePreviousPage} className="result-viewImdb" >Previous Page</a>
+                <a href="#" onClick={handlePreviousPage} className="result-prev" >Previous Page</a>
               }
             </div>
 
             <div>
               { (currentPage < (results.length/ RESULTS_PER_PAGE) - 1) && 
-                <a href="#" onClick={handleNextPage} className="result-viewImdb" >Next Page</a>
+                <a href="#" onClick={handleNextPage} className="result-next" >Next Page</a>
               }
             </div>
           </div>
@@ -169,20 +171,23 @@ function App(){
               return (
                 <div key={"result"+i} className="result">
                   <div className="result-img">
-                  <img src={result.poster} alt="Lamp" width="100" height="100"/>
+                  { (result.poster !== "N/A") ?
+                  <img src={result.poster} alt={result.title} width={showDetails[i] ? "200" : "100"} height={showDetails[i] ? "200" : "100"}/> :
+                  <img src="https://www.budget101.com/images/image-not-available.png?6068" alt={result.title} width={showDetails[i] ? "200" : "100"} height={showDetails[i] ? "200" : "100"}/> 
+                  }
                   </div>
                   <div className="result-content">
                     <h3>{result.title}</h3>
                     { showDetails[i] &&
                     <div>
-                      <p>Year: {result.year}</p>
-                      <p>Rated: {result.rated}</p>
-                      <p>Genre: {result.genre}</p>
-                      <p>Language: {result.language}</p>
-                      <p>Country: {result.country}</p>
-                      <p>IMDB Rating: {result.imdbRating}</p>
-                      <p>Type: {result.type}</p>
-                      <p> Plot: {result.plot}</p>
+                      <p><b>Year:</b> {result.year}</p>
+                      <p><b>Rated:</b> {result.rated}</p>
+                      <p><b>Genre:</b> {result.genre}</p>
+                      <p><b>Language:</b> {result.language}</p>
+                      <p><b>Country:</b> {result.country}</p>
+                      <p><b>IMDB Rating:</b> {result.imdbRating}</p>
+                      <p><b>Type:</b> {result.type}</p>
+                      <p><b>Plot:</b> {result.plot}</p>
                     </div>
                     }
                     
@@ -199,13 +204,13 @@ function App(){
           <div className="changePage">
             <div>
               { (currentPage !== 0) && 
-                <a href="#" onClick={handlePreviousPage} className="result-viewImdb" >Previous Page</a>
+                <a href="#" onClick={handlePreviousPage} className="result-prev" >Previous Page</a>
               }
             </div>
 
             <div>
               { (currentPage < (results.length/ RESULTS_PER_PAGE) - 1) && 
-                <a href="#" onClick={handleNextPage} className="result-viewImdb" >Next Page</a>
+                <a href="#" onClick={handleNextPage} className="result-next" >Next Page</a>
               }
             </div>
           </div>
