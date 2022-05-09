@@ -91,7 +91,6 @@ h1{
   border-radius: 16px;
   transition: 0.2s;
   border: 1px solid #4e5e50;
-  height:25vh;
 }
 
 .result:hover{
@@ -111,7 +110,7 @@ h1{
   margin-bottom: 16px;
 }
 
-.result a {
+.result-readMore {
   display: inline-block;
   padding:12px 16px;
   background-color:#248032;
@@ -120,6 +119,18 @@ h1{
   text-decoration: none;
   border-radius: 12px;
   transition:0.4s;
+}
+
+.result-viewImdb{
+  display: inline-block;
+  padding:12px 16px;
+  background-color:#1a391e;
+  color: white;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 12px;
+  transition:0.4s;
+  margin-left: 10px;
 }
 
 .result a:hover {

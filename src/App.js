@@ -7,6 +7,7 @@ function App(){
   const [results, setResults] = useState([]);
   const [isPlot, setIsPlot] = useState(true);
   const [isCaption, setIsCaption] = useState(false);
+  const [showDetails, setShowDetails] = useState(new Array(30).fill(false));
 
   const handleSearch = async e => {
     e.preventDefault();
@@ -44,6 +45,14 @@ function App(){
     setIsPlot(false);
   };
 
+  const handleShowDetails = (i) => {
+    console.log(i);
+    let temp_state = [...showDetails];
+    temp_state[i] = !temp_state[i];
+    setShowDetails(temp_state);
+    console.log(showDetails);
+  }
+
   return (
     <div className="App">
       <header>
@@ -79,13 +88,26 @@ function App(){
             return (
               <div key={"result"+i} className="result">
                 <div className="result-img">
-                <img src="https://www.w3schools.com/images/lamp.jpg" alt="Lamp" width="100" height="100"/>
+                <img src={result.poster} alt="Lamp" width="100" height="100"/>
                 </div>
                 <div className="result-content">
                   <h3>{result.title}</h3>
-                  <p>This is the description</p>
-                  <a href={result.imdb_url} target="_blank" rel="nofollow"> View on IMDB </a>
-                  {/* <p> {result.description}</p> */}
+                  { showDetails[i] &&
+                  <div>
+                    <p>Year: {result.year}</p>
+                    <p>Rated: {result.rated}</p>
+                    <p>Genre: {result.genre}</p>
+                    <p>Language: {result.language}</p>
+                    <p>Country: {result.country}</p>
+                    <p>IMDB Rating: {result.imdbRating}</p>
+                    <p>Type: {result.type}</p>
+                    <p> Plot: {result.plot}</p>
+                  </div>
+                  }
+                  
+                  <a onClick={() => handleShowDetails(i)} className="result-readMore" >{showDetails[i] ? "Hide" : "Show" } Details</a>
+                  {showDetails[i] &&
+                  <a href={result.imdb_url} className="result-viewImdb" target="_blank" rel="nofollow"> View on IMDB </a>}
                 </div>
                 
               </div>
