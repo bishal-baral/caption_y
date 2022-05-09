@@ -13,54 +13,28 @@ def search(index: str, query: Query, media_type: str) -> None:
         print(hit)
         if media_type=="movie":
             if hit.type == "movie":
-                result.append(
-                    {
-                        "title": hit.title,
-                        "imdb_url": hit.imdb_url,
-                        "year": hit.year,
-                        "rated": hit.rated,
-                        "genre": hit.genre,
-                        "plot": hit.plot,
-                        "language": hit.language,
-                        "country": hit.country,
-                        "poster": hit.poster,
-                        "imdbRating": hit.imdbRating,
-                        "type": hit.type
-                    })
+                result.append(createResult(hit))
         elif media_type == "series":
             if hit.type == "series" or hit.type == "episode":
-                result.append(
-                    {
-                        "title": hit.title,
-                        "imdb_url": hit.imdb_url,
-                        "year": hit.year,
-                        "rated": hit.rated,
-                        "genre": hit.genre,
-                        "plot": hit.plot,
-                        "language": hit.language,
-                        "country": hit.country,
-                        "poster": hit.poster,
-                        "imdbRating": hit.imdbRating,
-                        "type": hit.type
-                    }
-                )
+                result.append(createResult(hit))
         else:
-            result.append(
-                    {
-                        "title": hit.title,
-                        "imdb_url": hit.imdb_url,
-                        "year": hit.year,
-                        "rated": hit.rated,
-                        "genre": hit.genre,
-                        "plot": hit.plot,
-                        "language": hit.language,
-                        "country": hit.country,
-                        "poster": hit.poster,
-                        "imdbRating": hit.imdbRating,
-                        "type": hit.type
-                    }
-                )
+            result.append(createResult(hit))
     return result
+
+def createResult(hit):
+    return {
+            "title": hit.title,
+            "imdb_url": hit.imdb_url,
+            "year": hit.year,
+            "rated": hit.rated,
+            "genre": hit.genre,
+            "plot": hit.plot,
+            "language": hit.language,
+            "country": hit.country,
+            "poster": hit.poster,
+            "imdbRating": hit.imdbRating,
+            "type": hit.type
+            }
 
 
 def make_query(query_text, content_type, media_type):
