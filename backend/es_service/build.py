@@ -1,4 +1,5 @@
-# Ali Yuksekkaya, Khadija Tirmazi
+# Authors: Bishal Baral, Ali Yuksekkaya, Khadija Tirmazi
+
 import json
 import time
 import os

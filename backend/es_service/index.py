@@ -1,4 +1,4 @@
-# Ali Yuksekkaya, Khadija Tirmazi
+# Authors: Bishal Baral, Ali Yuksekkaya, Khadija Tirmazi
 
 from typing import Iterator, Dict, Union, Sequence, Generator
 

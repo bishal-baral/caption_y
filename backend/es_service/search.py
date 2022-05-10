@@ -1,4 +1,4 @@
-# Ali Yuksekkaya, Khadija Tirmazi
+# Authors: Bishal Baral, Ali Yuksekkaya, Khadija Tirmazi
 
 from elasticsearch_dsl import Search
 from elasticsearch_dsl.connections import connections
