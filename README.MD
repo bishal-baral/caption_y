@@ -1,11 +1,5 @@
 # Caption-Y
 
-### Setting up
-***Don't skip these steps even if you have already installed them!***
-- run ```pip install flask```
-- run ```pip install elasticsearch_dsl```
-- run ```pip install python-dotenv```
-
 ### Preparing data
 - Go into ```/data/readme.txt``` and download the data. Extract the data into ```/data```.
 - run elasticsearch and run ```build.py```
@@ -25,6 +19,13 @@
   2. For Windows User run:
         - ```py -m venv env```
         - ```.\env\Scripts\activate```
+
+### Setting up
+***Don't skip these steps even if you have already installed them!***
+- run ```pip install flask```
+- run ```pip install elasticsearch_dsl```
+- run ```pip install python-dotenv```
+
 - to run the backend server with npm, run ```npm run start-backend``` on a separate terminal window
 - to run the react server, ```npm run start```  
 
