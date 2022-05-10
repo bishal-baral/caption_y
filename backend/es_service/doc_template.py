@@ -1,3 +1,5 @@
+# Ali Yuksekkaya, Khadija Tirmazi
+
 from elasticsearch_dsl import (  # type: ignore
     Document,
     Text,

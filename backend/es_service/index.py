@@ -1,3 +1,5 @@
+# Ali Yuksekkaya, Khadija Tirmazi
+
 from typing import Iterator, Dict, Union, Sequence, Generator
 
 from elasticsearch_dsl import Index  # type: ignore

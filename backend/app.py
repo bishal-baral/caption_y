@@ -1,3 +1,5 @@
+# Ali Yuksekkaya, Khadija Tirmazi
+
 from flask import Flask, request
 import json
 from es_service.search import make_query
