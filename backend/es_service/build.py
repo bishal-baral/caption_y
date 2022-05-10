@@ -7,6 +7,11 @@ from typing import List, Dict, Union, Iterator, Generator
 from index import ESIndex
 import logging
 
+# SEARCH_INDEX_NAME = "test_movies"
+# DATA_PATH = "../../data/example_processed_data.jl"
+SEARCH_INDEX_NAME = "movies"
+DATA_PATH = "../../data/captions.jl"
+
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
 logging.basicConfig(
@@ -50,7 +55,7 @@ class IndexLoader:
 
 def main():
     idx_loader = IndexLoader.from_docs_jsonl(
-        "movies", "../../data/captions.jl")
+        SEARCH_INDEX_NAME, DATA_PATH)
     idx_loader.load()
 
 

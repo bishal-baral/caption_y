@@ -4,6 +4,9 @@ from elasticsearch_dsl import Search
 from elasticsearch_dsl.connections import connections
 from elasticsearch_dsl.query import Match, MatchAll, ScriptScore, Ids, Query
 
+# SEARCH_INDEX_NAME = "test_movies"
+SEARCH_INDEX_NAME = "movies"
+
 
 def search(index: str, query: Query, media_type: str) -> None:
     s = Search(using="default", index=index).query(query)[
@@ -51,7 +54,7 @@ def make_query(query_text, content_type, media_type):
         q_basic = Match(
             plot={"query": query_text}
         )
-    return search("movies", q_basic, media_type)
+    return search(SEARCH_INDEX_NAME, q_basic, media_type)
 
 
 if __name__ == "__main__":
