@@ -50,6 +50,9 @@ For example, for the index built using example_processed_data.jl,  when we searc
 
 #### Query 
 “we should call judgment”, using caption search, from the “Edison Kinetoscopic Record of Sneeze” was the first result.
+<img src="https://github.com/bishal-baral/caption_y/blob/main/image1.png" width="1000">
 
 #### Query
 “in love with Buckingham Duke”, using Plot Search, looking for The Three Musketeers returns it as the first result.
+<img src="https://github.com/bishal-baral/caption_y/blob/main/image2.png" width="1000">
+
